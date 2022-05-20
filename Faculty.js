@@ -1,114 +1,141 @@
-var data = {
+// var data = {
 
-    "Department": [{
-
-
-        "deptId": 1,
-        "deptName": "IT"
+//     "Department": [{
 
 
-    },
-
-    {
-
-
-        "deptId": 2,
-        "deptName": "HR"
+//         "deptId": 1,
+//         "deptName": "IT"
 
 
-    },
-    {
+//     },
+
+//     {
 
 
-        "deptId": 3,
-        "deptName": "Accounts"
+//         "deptId": 2,
+//         "deptName": "HR"
 
 
-    }],
-
-    "Faculty": [{
-
-
-        "id": 1,
-        "name": "Zohaib",
-        "design": "Web Developer",
-        "deptId": 1,
-        "deptName": "IT",
-        "pic": "/img/53165121_2304964032867540_3804352344259297280_n.jpg",
+//     },
+//     {
 
 
-    },
-    {
+//         "deptId": 3,
+//         "deptName": "Accounts"
+
+
+//     }],
+
+//     "Faculty": [{
+
+
+//         "id": 1,
+//         "name": "Zohaib",
+//         "design": "Web Developer",
+//         "deptId": 1,
+//         "deptName": "IT",
+//         "pic": "/img/53165121_2304964032867540_3804352344259297280_n.jpg",
+
+
+//     },
+//     {
         
         
-        "id": 2,
-        "name": "Ahmer",
-        "design": "Web Developer",
-        "deptId": 1,
-        "deptName": "IT",
-        "pic": "/img/29573068_432590410488029_7732008913524300786_n.jpg",
+//         "id": 2,
+//         "name": "Ahmer",
+//         "design": "Web Developer",
+//         "deptId": 1,
+//         "deptName": "IT",
+//         "pic": "/img/29573068_432590410488029_7732008913524300786_n.jpg",
         
         
-    },
-    {
+//     },
+//     {
 
 
-        "id": 1,
-        "name": "Zain",
-        "design": "Oracle Developer",
-        "deptId": 1,
-        "deptName": "IT",
-        "pic": "/img/53165121_2304964032867540_3804352344259297280_n.jpg",
+//         "id": 1,
+//         "name": "Zain",
+//         "design": "Oracle Developer",
+//         "deptId": 1,
+//         "deptName": "IT",
+//         "pic": "/img/53165121_2304964032867540_3804352344259297280_n.jpg",
 
 
-    },
-    {
+//     },
+//     {
 
 
-        "id": 3,
-        "name": "Kaleem",
-        "design": "Assistant Manager",
-        "deptId": 2,
-        "deptName": "HR",
-        "pic": "/img/Asma-Basharat-Ali-2-p7hp1s0gai21dgbth9bd3rt6a39gq07tb2xk7yyaxc.png",
+//         "id": 3,
+//         "name": "Kaleem",
+//         "design": "Assistant Manager",
+//         "deptId": 2,
+//         "deptName": "HR",
+//         "pic": "/img/Asma-Basharat-Ali-2-p7hp1s0gai21dgbth9bd3rt6a39gq07tb2xk7yyaxc.png",
 
 
-    },
-    {
+//     },
+//     {
 
 
-        "id": 4,
-        "name": "Farhan",
-        "design": "Manager",
-        "deptId": 3,
-        "deptName": "Accounts",
-        "pic": "/img/Asma-Basharat-Ali-2-p7hp1s0gai21dgbth9bd3rt6a39gq07tb2xk7yyaxc.png",
+//         "id": 4,
+//         "name": "Farhan",
+//         "design": "Manager",
+//         "deptId": 3,
+//         "deptName": "Accounts",
+//         "pic": "/img/Asma-Basharat-Ali-2-p7hp1s0gai21dgbth9bd3rt6a39gq07tb2xk7yyaxc.png",
 
 
-    },
-    {
+//     },
+//     {
 
 
-        "id": 5,
-        "name": "Haroon",
-        "design": "Account Executive",
-        "deptId": 3,
-        "deptName": "Accounts",
-        "pic": "/img/Asma-Basharat-Ali-2-p7hp1s0gai21dgbth9bd3rt6a39gq07tb2xk7yyaxc.png",
+//         "id": 5,
+//         "name": "Haroon",
+//         "design": "Account Executive",
+//         "deptId": 3,
+//         "deptName": "Accounts",
+//         "pic": "/img/Asma-Basharat-Ali-2-p7hp1s0gai21dgbth9bd3rt6a39gq07tb2xk7yyaxc.png",
 
 
-    }
-    ]
+//     }
+//     ]
+
+// }
+
+
+async function facultyApi(obj){
+
+
+    var response = await fetch("https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx")
+
+    const data = await response.json()
+
+    // console.log(data)
+
+    return data
+
 
 }
 
 
 
 
+
+
+
+
+
+
 function getdata() {
+    
+    
+    facultyApi(obj)
+    
+    
+    // console.log("faculty",obj)
 
 
-    var datalist = data.Department
+    // var datalist = data.Department
 
 
     datalist.forEach(lst => {
@@ -132,7 +159,7 @@ function getdata() {
 
 
 
-    // cardData()
+    cardData()
     active()
 
 
@@ -140,96 +167,96 @@ function getdata() {
 
 
 
-// function cardData() {
+function cardData() {
 
 
 
 
-//     var faculty = data.Faculty
+    var faculty = data.Faculty
 
-//     var hov = document.getElementById('card')
-
-
-//     faculty.forEach(fac => {
+    var hov = document.getElementById('card')
 
 
-
-//         if (fac.deptId === 1) {
+    faculty.forEach(fac => {
 
 
 
-//             hov.innerHTML += `
+        if (fac.deptId === 1) {
 
 
 
-//             <div class="maincard" id="main">
+            hov.innerHTML += `
 
 
 
-
-
-//                     <div class="card">
-
-
-//                         <div class="hov" id="hov">
-
-
-//                             <div class="mg">
-
-
-
-//                                 <img class="img-card"
-//                                 src="${fac.pic}" alt="">
-
-
-//                             </div>
-
-
-
-//                             <div class="data">
-
-
-//                                 <span class="card-heading">${fac.name}</span>
-//                                 <p class="card-desig">${fac.design}<br>
-//                                     ${fac.deptName}
-//                                 </p>
-
-
-
-//                                 <div class="butn">
-
-
-//                                     <button type="button" class="btn btn-primary"
-//                                     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
-//                                         Read More
-//                                     </button>
-
-
-
-//                                 </div>
-
-
-//                             </div>
-
-
-//                         </div>    
-
-
-//                     </div>
-
-
-//                 </div>
-
-//             `
-
-
-//         }
-//     })
+            <div class="maincard" id="main">
 
 
 
 
-// }
+
+                    <div class="card">
+
+
+                        <div class="hov" id="hov">
+
+
+                            <div class="mg">
+
+
+
+                                <img class="img-card"
+                                src="${fac.pic}" alt="">
+
+
+                            </div>
+
+
+
+                            <div class="data">
+
+
+                                <span class="card-heading">${fac.name}</span>
+                                <p class="card-desig">${fac.design}<br>
+                                    ${fac.deptName}
+                                </p>
+
+
+
+                                <div class="butn">
+
+
+                                    <button type="button" class="btn btn-primary"
+                                    style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
+                                        Read More
+                                    </button>
+
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>    
+
+
+                    </div>
+
+
+                </div>
+
+            `
+
+
+        }
+    })
+
+
+
+
+}
 
 
 function getcards(cardId) {
@@ -237,14 +264,11 @@ function getcards(cardId) {
     
     clearRender()
     
-    // console.log("card", data)
     
     var cards = data.Faculty
     var hov = document.getElementById('card')
     
     
-    // cards.forEach(card => {
-
 
         for (let i = 0; i < cards.length; i++) {
             const element = cards[i];
@@ -332,7 +356,6 @@ function getcards(cardId) {
 
 
 
-    // })
 
 }
 
