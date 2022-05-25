@@ -39,16 +39,16 @@
 
 //     },
 //     {
-        
-        
+
+
 //         "id": 2,
 //         "name": "Ahmer",
 //         "design": "Web Developer",
 //         "deptId": 1,
 //         "deptName": "IT",
 //         "pic": "/img/29573068_432590410488029_7732008913524300786_n.jpg",
-        
-        
+
+
 //     },
 //     {
 
@@ -103,223 +103,295 @@
 // }
 
 
-async function facultyApi(obj){
+// async function facultyApi(){
 
 
-    var response = await fetch("https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx")
+//     var response = await fetch("https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?dept=6")
 
-    const data = await response.json()
+//     const data = await response.json()
 
-    // console.log(data)
+//     console.log(data)
 
-    return data
-
-
-}
+//     return data
 
 
+// }
 
 
-
-
-
-
+// facultyApi()
 
 
 function getdata() {
-    
-    
-    facultyApi(obj)
-    
-    
-    // console.log("faculty",obj)
 
 
-    // var datalist = data.Department
+
+    fetch("https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx")
 
 
-    datalist.forEach(lst => {
+        .then(function (response) {
 
 
-        var ul = document.getElementById('list-content')
+            return response.json()
 
-        ul.innerHTML += `
+        })
 
-            <div>
+
+        .then(function (data) {
+
+
+
+
+            var dept = data.NewEventsResultsData
+
+
+            dept.forEach(lst => {
+
+
+                var ul = document.getElementById('list-content')
+
+                ul.innerHTML += `
+            
+                    <div>
+            
+            
+                        <li id="list" onclick=getcards(${lst.DeptId})>${lst.DeptName}</li>
+            
+                    </div>
+            
+                `
+
+                
+               
+            })    
+            
+            
+        })    
         
-
-                <li class="list" onclick=getcards(${lst.deptId})>${lst.deptName}</li>
-
-            </div>
-
-        `
+        
+        
+    active()
+    getcards(3)
 
 
-    })
+}
 
 
 
-    cardData()
+// function cardData() {
+
+
+//     fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=3`)
+
+
+//         .then(function (response) {
+
+
+//             return response.json()
+
+//         })
+
+//         .then(function (data) {
+
+
+
+
+//             var cards = data.Lst_Detail
+
+
+//             var hov = document.getElementById('card')
+
+
+
+
+
+//             for (let i = 0; i < cards.length; i++) {
+//                 const element = cards[i];
+
+
+//                 if (element.DeptId === 3) {
+
+
+
+//                     var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(element.Img)))
+
+
+
+//                     let HTMLCODE = `
+                
+                
+                
+                
+                
+//                         <div class="maincard" id="main">
+                
+                
+//                     <div class="card">
+    
+    
+//                         <div class="hov" id="hov">
+    
+    
+//                         <div class="mg">
+    
+    
+    
+//                                 <img class="img-card" id="image"
+//                                 src="${imgsrc}" alt="">
+    
+    
+//                             </div>
+    
+    
+    
+//                             <div class="data">
+    
+    
+//                             <span class="card-heading">${element.EmpName}</span>
+//                             <p class="card-desig">${element.Designation}<br>
+//                             ${element.DeptName}
+//                             </p>
+    
+    
+    
+//                             <div class="butn">
+    
+    
+//                                     <button type="button" class="btn btn-primary"
+//                                     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
+//                                     Read More
+//                                     </button>
+                                    
+                                    
+//                                     </div>
+    
+    
+//                                     </div>
+    
+    
+//                                     </div>    
+    
+                                    
+//                                     </div>
+    
+    
+//                                     </div>`
+
+
+
+
+
+//                     hov.innerHTML += HTMLCODE
+
+
+//                 }
+
+//             }
+
+//         })
+
+
+
+
+
+// }
+
+
+function getcards(DeptId) {
+
+
+    // if(DeptId === 3){
+                    
+                    
+    //     var abc = document.getElementById('list')
+
+    //     abc.className = "active_li"
+    //     console.log("hopgaya" , abc)
+
+
+    // }
+
     active()
 
 
-}
-
-
-
-function cardData() {
-
-
-
-
-    var faculty = data.Faculty
-
-    var hov = document.getElementById('card')
-
-
-    faculty.forEach(fac => {
-
-
-
-        if (fac.deptId === 1) {
-
-
-
-            hov.innerHTML += `
-
-
-
-            <div class="maincard" id="main">
-
-
-
-
-
-                    <div class="card">
-
-
-                        <div class="hov" id="hov">
-
-
-                            <div class="mg">
-
-
-
-                                <img class="img-card"
-                                src="${fac.pic}" alt="">
-
-
-                            </div>
-
-
-
-                            <div class="data">
-
-
-                                <span class="card-heading">${fac.name}</span>
-                                <p class="card-desig">${fac.design}<br>
-                                    ${fac.deptName}
-                                </p>
-
-
-
-                                <div class="butn">
-
-
-                                    <button type="button" class="btn btn-primary"
-                                    style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
-                                        Read More
-                                    </button>
-
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </div>    
-
-
-                    </div>
-
-
-                </div>
-
-            `
-
-
-        }
-    })
-
-
-
-
-}
-
-
-function getcards(cardId) {
-
-    
     clearRender()
-    
-    
-    var cards = data.Faculty
-    var hov = document.getElementById('card')
-    
-    
-
-        for (let i = 0; i < cards.length; i++) {
-            const element = cards[i];
 
 
-        if (element.deptId === cardId) {
+    fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=${DeptId}`)
+
+
+        .then(function (response) {
+
+
+            return response.json()
+
+        })
+
+        .then(function (data) {
+
+
+
+
+            var cards = data.Lst_Detail
+
+
+            var hov = document.getElementById('card')
 
 
 
 
 
-            let HTMLCODE = `
+            for (let i = 0; i < cards.length; i++) {
+                const element = cards[i];
+
+
+                // if (element.deptId === cardId) {
+
+
+
+                var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(element.Img)))
+
+
+
+                let HTMLCODE = `
                 
                 
-            
-            
                 
-            <div class="maincard" id="main">
-            
-            
+                
+                
+                        <div class="maincard" id="main">
+                
+                
                     <div class="card">
-                
-                
+    
+    
                         <div class="hov" id="hov">
-                
-                        
+    
+    
                         <div class="mg">
-                        
-                        
-                        
-                                <img class="img-card"
-                                src="${element.pic}" alt="">
-                
-                
+    
+    
+    
+                                <img class="img-card" id="image"
+                                src="${imgsrc}" alt="">
+    
+    
                             </div>
-                
-                
-                            
+    
+    
+    
                             <div class="data">
-                
-                            
-                            <span class="card-heading">${element.name}</span>
-                            <p class="card-desig">${element.design}<br>
-                            ${element.deptName}
+    
+    
+                            <span class="card-heading">${element.EmpName}</span>
+                            <p class="card-desig">${element.Designation}<br>
+                            ${element.DeptName}
                             </p>
-                            
-                            
-                            
+    
+    
+    
                             <div class="butn">
-                            
-                            
+    
+    
                                     <button type="button" class="btn btn-primary"
                                     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
                                     Read More
@@ -327,32 +399,30 @@ function getcards(cardId) {
                                     
                                     
                                     </div>
-                                    
-                                    
+    
+    
                                     </div>
-                                    
-                                    
+    
+    
                                     </div>    
-                                    
+    
                                     
                                     </div>
-                                    
-                                    
+    
+    
                                     </div>`
 
 
 
 
 
-            hov.innerHTML += HTMLCODE
-            console.log("lenght", element.name)
+                hov.innerHTML += HTMLCODE
 
 
-        }
-
-    }
+            }
 
 
+        })
 
 
 
@@ -373,12 +443,11 @@ function clearRender() {
 
 
 
-function active() {
+function active(DeptId) {
 
 
-    var ul = document.querySelectorAll(".list")
-
-
+    var ul = document.querySelectorAll("#list")
+    
     ul.forEach(ull => {
 
         ull.addEventListener('click', function () {
