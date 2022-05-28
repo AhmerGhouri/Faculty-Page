@@ -153,7 +153,7 @@
 
 
 
-.card:hover .btn{
+.card:hover .btn1{
 
     
     border: 1px solid green !important;
@@ -273,7 +273,7 @@
 
 
 
-.btn{
+.btn1{
 
 
     border: 1px solid green !important;
@@ -287,7 +287,7 @@
 
 
 
-.btn:hover{
+.btn1:hover{
 
 
     border: 1px solid green !important;
@@ -306,19 +306,102 @@
     line-height: 1 !important;
     padding: 10px 20px !important;
 
+}
 
+  /* The actual popup */
+/*
+.Popup .popupText {
+
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 2;
+    bottom: 125%;
+    left: 50%;
+    margin-left: 100px;
+
+}
+*/
+
+/* Popup arrow 
+
+.btn-primary .popupText::after {
+
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+
+}
+
+*/
+/* Toggle this class - hide and show the popup */
+
+/*
+.popupText .show {
+
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+
+}
+
+*/
+/* Add animation (fade in the popup) */
+/*
+@-webkit-keyframes fadeIn {
+
+    from {opacity: 0;} 
+    to {opacity: 1;}
+
+}
+  
+@keyframes fadeIn {
+
+    from {opacity: 0;}
+    to {opacity:1 ;}
+
+}
+ */
+
+.btn-primary:active{
+
+
+    box-shadow: none !important;
+    border: none !important;
 
 }
 
 
+.btn1:active{
 
+    box-shadow: none !important;
+    border: none !important;
+
+}
 
 .btn-primary:focus{
 
     box-shadow: none !important;
+    border: none !important;
 
 }
 
+.btn1:focus{
+
+    box-shadow: none !important;
+    border: none !important;
+
+}
 
 
 
@@ -486,5 +569,257 @@
 
     background-color: #013777;
     color: white !important;
+
+}
+
+
+
+/* .Popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+   */
+/* Popup container - can be anything you want */
+/* .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  /*
+  
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 15%;
+    left: 0%;
+    margin-left: 0px;
+  }
+
+  */
+  
+  /* Popup arrow */
+
+  /*
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  */
+  
+  /* Toggle this class - hide and show the popup */
+
+  /*
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /*
+  /* Add animation (fade in the popup) */
+
+  /*
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  } 
+  */
+
+  /* Modal Css*/
+
+.modal-dialog{
+
+
+    margin-top: 90px !important;
+
+
+}
+
+
+.modal-content{
+
+
+    border: 2px solid #013777 !important;
+    border-radius: 1px 40px 0px 40px !important;
+    height: 80vh !important;
+    width: 110%;
+
+
+}
+
+
+.modal-body{
+
+    height: 250px;
+    overflow-y: scroll;
+
+}
+
+
+.mainheading{
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Poppins';
+    width: 100%;
+    font-size: 30px;
+    color: #013777;
+    font-weight: 600;
+
+}
+
+
+
+
+
+
+.contentDiv{
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin : 50px; */
+
+
+}
+
+
+.imgDiv{
+
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -80px;
+
+}
+
+
+.image{
+
+    /* width: 40%; */
+    text-align: center;
+
+}
+
+.mainimg{
+
+
+    border-radius: 100px;
+    width: 16%;
+    height: 120px;
+    border-top: 2px solid #013777;
+    border-left: 2px solid #013777;
+    border-right: 2px solid #013777;
+    
+
+
+}
+
+.detContDiv{
+
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* margin: 50px; */
+
+
+}
+
+.nameHeading{
+
+
+    font-family: 'Poppins';
+    font-size: 20px;
+    color: #013777;
+    font-weight: 600;
+
+
+}
+
+
+.designHeading{
+
+
+    font-family: 'Poppins';
+    font-size: 20px;
+    color: green;
+    font-weight: 500;
+    text-align: center;
+
+
+}
+
+
+.headingsDiv{
+
+
+    font-family: 'Poppins';
+    margin-top: 10px;
+    padding: 10px;
+
+
+}
+
+.eduHeading{
+
+
+    font-size: 25px;
+    font-weight: 550;
+    color: #013777;
+
+
+}
+
+
+.eduList{
+
+    padding-top: 10px;
+    /* color: #484848; */
+    list-style: none;
+
+}
+
+.fa{
+
+    color: green;
+    padding-right: 5px;
 
 }
