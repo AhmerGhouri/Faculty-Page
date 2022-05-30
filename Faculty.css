@@ -140,6 +140,57 @@
 }
 
 
+.card-header{
+
+
+    color: white !important;
+    background-color: #013777 !important;
+    border: 1px solid white !important;
+
+
+}
+
+
+.myClass{
+
+    color: white !important;
+    background-color: green !important;
+    border: 1px solid white !important;
+
+}
+
+.card-header:active{
+
+
+    color: white !important;
+    background-color: green !important;
+    border: 1px solid white !important;
+
+
+}
+
+
+.btn-link{
+
+
+    color: white !important;
+    font-family: 'Poppins';
+
+
+}
+
+
+
+.noData{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: red;
+
+}
+
 
 
 .card:hover{
@@ -307,71 +358,6 @@
     padding: 10px 20px !important;
 
 }
-
-  /* The actual popup */
-/*
-.Popup .popupText {
-
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 2;
-    bottom: 125%;
-    left: 50%;
-    margin-left: 100px;
-
-}
-*/
-
-/* Popup arrow 
-
-.btn-primary .popupText::after {
-
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-
-}
-
-*/
-/* Toggle this class - hide and show the popup */
-
-/*
-.popupText .show {
-
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-
-}
-
-*/
-/* Add animation (fade in the popup) */
-/*
-@-webkit-keyframes fadeIn {
-
-    from {opacity: 0;} 
-    to {opacity: 1;}
-
-}
-  
-@keyframes fadeIn {
-
-    from {opacity: 0;}
-    to {opacity:1 ;}
-
-}
- */
 
 .btn-primary:active{
 
@@ -572,48 +558,17 @@
 
 }
 
+.card-active{
+
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    color: white !important;
+    background-color: #013777 !important;
+    border: 1px solid white !important;
+
+}
 
 
-/* .Popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-   */
-/* Popup container - can be anything you want */
-/* .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* The actual popup */
-  /*
-  
-  .popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 15%;
-    left: 0%;
-    margin-left: 0px;
-  }
-
-  */
   
   /* Popup arrow */
 
@@ -631,29 +586,6 @@
 
   */
   
-  /* Toggle this class - hide and show the popup */
-
-  /*
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-  
-  /*
-  /* Add animation (fade in the popup) */
-
-  /*
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-  } 
-  */
 
   /* Modal Css*/
 
@@ -712,7 +644,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* margin : 50px; */
 
 
 }
@@ -733,7 +664,6 @@
 
 .image{
 
-    /* width: 40%; */
     text-align: center;
 
 }
@@ -758,7 +688,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* margin: 50px; */
 
 
 }
@@ -812,7 +741,6 @@
 .eduList{
 
     padding-top: 10px;
-    /* color: #484848; */
     list-style: none;
 
 }
@@ -823,3 +751,23 @@
     padding-right: 5px;
 
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #013777;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

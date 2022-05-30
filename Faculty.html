@@ -17,9 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- version 6.0.0 without cdn hash -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -27,7 +24,7 @@
     <title>JMDC Faculty</title>
 </head>
 
-<body onload="getdata()">
+<body>
 
 
     <div>
@@ -75,6 +72,13 @@
             </div>
 
 
+            <div class="Pagin" id="Pagin">
+
+            
+
+            </div>
+
+
             <div class="popup">
 
 
@@ -116,11 +120,88 @@
                                     <div class="mainEdu">
 
 
-                                        <div id="accordion">
+                                        <div id="accordion" id="accordion">
 
                                             <div class="card" id="cardDetail">
 
+                                                <div class="card-header" id="headingTwo">
+
+                                                    <h5 class="mb-0">
+                                                        <i  onclick="changeCss(this)" class="fa-solid fa-minus">
+                                                        
+                                                      <button  class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+
+                                                        <!-- <i  onclick="changeCss(this)" class="fa-solid fa-minus"></i> -->
+                                                        Experience
+                                                        
+                                                    </button>
+                                                </i>
+                                                    
+                                                </h5>
+                                                </div>
+
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                data-parent="#accordion">
+
+                                                    <div class="card-body">
+            
+            
+                                                        <div class="eduList" id="educlist">
+
+                                                        </div>
+                                                        
+                                                    </div>
+
+
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="card" id="cardDetail">
+
+                                                <div class="card-header" id="headingTwo">
+
+                                                    <h5 class="mb-0">
+                                                        <i  onclick="changeCss(this)" class="fa-solid fa-plus"></i>
+
+                                                        
+                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+                                                                Qualification
+
+                                                            </button>
+                                                            
+                                                            
+                                                        </i>
+                                                        </h5>
+
+                                                </div>
+
+                                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne"
+                                                data-parent="#accordion">
+
+                                                <div class="card-body">
+            
+            
+                                                    <div class="eduList" id="qualist">
+
+                                                    </div>
+                                                    
+                                                </div>
+
+
+                                                </div>
+
+
+                                            </div>
+
+                                            <div id="cardDetail3">
+
                                                 
+
+                                                
+
 
                                             </div>
 

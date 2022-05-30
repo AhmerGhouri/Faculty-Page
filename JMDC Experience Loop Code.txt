@@ -1,0 +1,147 @@
+   // console.log(data)
+
+                // return console.log(" Experience ",exp)
+                
+            // })
+
+
+                // var ExpData = data.Lst_Exp
+
+                // for (let j = 0; j < ExpData.length; j++) {
+                //     const exp = ExpData[j];
+
+                //     cardDetail.innerHTML = `
+                            
+                //             <div class="card-header" id="headingOne">
+            
+                //                                                 <h5 class="mb-0">
+            
+                //                                                     <button class="btn btn-link" data-toggle="collapse"
+                //                                                         data-target="#${exp.Empid}" aria-expanded="true"
+                //                                                         aria-controls="collapseOne">
+            
+                //                                                         Experience
+            
+                //                                                     </button>
+            
+                //                                                 </h5>
+            
+                //                                             </div>
+            
+            
+                //                                             <div id="${exp.Empid}" class="collapse show" aria-labelledby="headingOne"
+                //                                                 data-parent="#accordion">
+            
+                //                                                 <div class="card-body">
+            
+            
+                //                                                     <div class="eduList">
+            
+                //                                                         <li><i class="fa fa-regular fa-circle-dot"></i>
+                //                                                         ${exp.Qualification}
+                //                                                         </li>
+                                                                        
+            
+                //                                                     </div>
+            
+                //                                                 </div>
+            
+                //                                             </div>
+            
+                //             `
+
+                // }
+
+
+                // var resData = data.Lst_Research
+
+                // for (let j = 0; j < resData.length; j++) {
+                //     const res = resData[j];
+
+                //     cardDetail.innerHTML = `
+                            
+                //             <div class="card-header" id="headingOne">
+            
+                //                                                 <h5 class="mb-0">
+            
+                //                                                     <button class="btn btn-link" data-toggle="collapse"
+                //                                                         data-target="#${res.Empid}" aria-expanded="true"
+                //                                                         aria-controls="collapseOne">
+            
+                //                                                         Experience
+            
+                //                                                     </button>
+            
+                //                                                 </h5>
+            
+                //                                             </div>
+            
+            
+                //                                             <div id="${res.Empid}" class="collapse show" aria-labelledby="headingOne"
+                //                                                 data-parent="#accordion">
+            
+                //                                                 <div class="card-body">
+            
+            
+                //                                                     <div class="eduList">
+            
+                //                                                         <li><i class="fa fa-regular fa-circle-dot"></i>
+                //                                                         ${res.Qualification}
+                //                                                         </li>
+                                                                        
+            
+                //                                                     </div>
+            
+                //                                                 </div>
+            
+                //                                             </div>
+            
+                //             `
+
+                // }
+
+                // var quaData = data.Lst_Qua
+
+                // for (let j = 0; j < quaData.length; j++) {
+                //     const qua = quaData[j];
+
+                //     cardDetail.innerHTML = `
+                            
+                //             <div class="card-header" id="headingOne">
+            
+                //                                                 <h5 class="mb-0">
+            
+                //                                                     <button class="btn btn-link" data-toggle="collapse"
+                //                                                         data-target="#${qua.Empid}" aria-expanded="true"
+                //                                                         aria-controls="collapseOne">
+            
+                //                                                         Experience
+            
+                //                                                     </button>
+            
+                //                                                 </h5>
+            
+                //                                             </div>
+            
+            
+                //                                             <div id="${qua.Empid}" class="collapse show" aria-labelledby="headingOne"
+                //                                                 data-parent="#accordion">
+            
+                //                                                 <div class="card-body">
+            
+            
+                //                                                     <div class="eduList">
+            
+                //                                                         <li><i class="fa fa-regular fa-circle-dot"></i>
+                //                                                         ${qua.Qualification}
+                //                                                         </li>
+                                                                        
+            
+                //                                                     </div>
+            
+                //                                                 </div>
+            
+                //                                             </div>
+            
+                //             `
+                // }

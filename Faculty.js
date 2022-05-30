@@ -139,6 +139,7 @@ function getdata() {
         .then(function (data) {
 
 
+            // console.log("firestr" , data)
 
 
             var dept = data.NewEventsResultsData
@@ -160,163 +161,96 @@ function getdata() {
             
                 `
 
-                
-               
-            })    
-            
-            
-        })    
-        
-        
-        
+
+
+            })
+
+
+        })
+
+
+
     active()
     getcards(3)
+    // get(3)
 
 
 }
 
 
+// function get(DeptId) {
 
-// function cardData() {
-
+//     // console.log("deptee" , DeptId)
 
 //     fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=3`)
-
-
-//         .then(function (response) {
-
-
-//             return response.json()
-
-//         })
-
-//         .then(function (data) {
-
-
-
-
-//             var cards = data.Lst_Detail
-
-
-//             var hov = document.getElementById('card')
-
-
-
-
-
-//             for (let i = 0; i < cards.length; i++) {
-//                 const element = cards[i];
-
-
-//                 if (element.DeptId === 3) {
-
-
-
-//                     var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(element.Img)))
-
-
-
-//                     let HTMLCODE = `
-                
-                
-                
-                
-                
-//                         <div class="maincard" id="main">
-                
-                
-//                     <div class="card">
     
+//     .then(function (response) {
+        
+        
+//         return response.json()
+        
+//     })
     
-//                         <div class="hov" id="hov">
-    
-    
-//                         <div class="mg">
-    
-    
-    
-//                                 <img class="img-card" id="image"
-//                                 src="${imgsrc}" alt="">
-    
-    
-//                             </div>
-    
-    
-    
-//                             <div class="data">
-    
-    
-//                             <span class="card-heading">${element.EmpName}</span>
-//                             <p class="card-desig">${element.Designation}<br>
-//                             ${element.DeptName}
-//                             </p>
-    
-    
-    
-//                             <div class="butn">
-    
-    
-//                                     <button type="button" class="btn btn-primary"
-//                                     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
-//                                     Read More
-//                                     </button>
-                                    
-                                    
-//                                     </div>
-    
-    
-//                                     </div>
-    
-    
-//                                     </div>    
-    
-                                    
-//                                     </div>
-    
-    
-//                                     </div>`
+//     .then(function (data) {
+        
+        
+//         // console.log("dept" , data)   
+
+//         var Pagin = document.getElementById('Pagin')
+
+//         var faculty = data.Lst_Detail
 
 
+//         for (let q = 0; q < faculty.length / 2; q++) {
+//             const element = faculty[q];
 
 
+//             // console.log("elel" , element)
 
-//                     hov.innerHTML += HTMLCODE
+
+//             NumLastRec = q * 5
+
+//             NumNewRec = NumLastRec - 5
+
+//             var li = document.createElement('li')
+
+//             Pagin.appendChild(li)
 
 
-//                 }
+//             if( q !== 0){
+
+
+//                 li.innerHTML = `<li><a onclick='getcards(${NumNewRec} , ${NumLastRec})'>${q}</a></li> `
+
 
 //             }
 
-//         })
 
 
+//             // console.log("num" , NumLastRec)
+//             // console.log("num" , NumNewRec)
 
 
+            
+//         }
+
+
+//     })
 
 // }
 
 
-function getcards(DeptId) {
 
 
-    // if(DeptId === 3){
-                    
-                    
-    //     var abc = document.getElementById('list')
+async function getcards(DeptId) {
 
-    //     abc.className = "active_li"
-    //     console.log("hopgaya" , abc)
-
-
-    // }
 
     active()
-
-
     clearRender()
+    // get(DeptId)
+    
 
-
-    fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=${DeptId}`)
+    await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=${DeptId}`)
 
 
         .then(function (response) {
@@ -329,6 +263,7 @@ function getcards(DeptId) {
         .then(function (data) {
 
 
+            // console.log("data" ,data)
 
 
             var cards = data.Lst_Detail
@@ -339,14 +274,11 @@ function getcards(DeptId) {
 
 
 
+            console.log("cards",cards)
 
-            for (let i = 0; i < cards.length; i++) {
+            for (let i = 0; i < cards.length ; i++) {
                 const element = cards[i];
 
-
-                // console.log(element)
-
-                // if (element.deptId === cardId) {
 
 
 
@@ -415,7 +347,7 @@ function getcards(DeptId) {
     
                                     </div>`
 
-        
+
 
 
 
@@ -433,31 +365,52 @@ function getcards(DeptId) {
 }
 
 
-async function popupData(Id){
+// For PopUp Data
+
+
+async function popupData(Id) {
 
 
     await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
 
-    .then(function(response) {
+        .then(function (response) {
 
-        return response.json()
+            return response.json()
 
-    })
+        })
 
-    .then(function (data) {
+        .then(function (data) {
 
-        var detData = data.NewEventsResultsData
 
-        var header = document.getElementById("header")
+            var detData = data.NewEventsResultsData
 
-        var cardDetail = document.getElementById("cardDetail")
+            var ExpData = data.Lst_Exp
 
-        
-        for (let i = 0; i < detData.length; i++) {
-            const detail = detData[i];
-            
+            var QuaData = data.Lst_Qua
 
-            header.innerHTML=`
+            var ResTab = data.Lst_Research
+
+            var header = document.getElementById("header")
+
+            var cardQua = document.getElementById("qualist")
+
+            var cardRes = document.getElementById("cardDetail3")
+
+            var cardDetail = document.getElementById("educlist")
+
+            document.getElementById('educlist').innerHTML = '';
+            document.getElementById('qualist').innerHTML = '';
+            document.getElementById('cardDetail3').innerHTML = '';
+
+
+
+            // For Name , designation and department Headings
+
+            for (let i = 0; i < detData.length; i++) {
+                const detail = detData[i];
+
+
+                header.innerHTML = `
             
             
                     <div class="imgDiv">
@@ -493,16 +446,16 @@ async function popupData(Id){
                             </div>
                             
                             <div class="designHeading">
-        
-        
+                            
+                            
                                 <span>${detail.DepartmentName}</span>
         
         
                             </div>
             
                         </div>
-            
-                    </div>
+                        
+                        </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
                                     <span aria-hidden="true">&times;</span>
@@ -513,76 +466,206 @@ async function popupData(Id){
 
 
             `
-            console.log(data)
 
-            var ExpData = data.Lst_Exp
 
-            for (let j = 0; j < ExpData.length; j++) {
-                const exp = ExpData[j];
+            }
 
-                cardDetail.innerHTML = `
+            //  for Experience Toggle Tab Showing Data
+
+            if (ExpData.length === 0) {
+
+
+
+
+                cardDetail.innerHTML += `
                 
-                <div class="card-header" id="headingOne">
+                <div class="noData">
+                
+                    No Data Available
+                
+                </div>
 
-                                                    <h5 class="mb-0">
-
-                                                        <button class="btn btn-link" data-toggle="collapse"
-                                                            data-target="#collapseOne" aria-expanded="true"
-                                                            aria-controls="collapseOne">
-
-                                                            Collapsible Group Item #1
-
-                                                        </button>
-
-                                                    </h5>
-
-                                                </div>
-
-
-                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                    data-parent="#accordion">
-
-                                                    <div class="card-body">
-
-
-                                                        <div class="eduList">
-
-                                                            <li><i class="fa fa-regular fa-circle-dot"></i>M.Phil.
-                                                                (Anatomy) = Baqai Medical University, Karachi (2016)
-                                                            </li>
-                                                            <li><i class="fa fa-regular fa-circle-dot"></i>M.B. B.S. =
-                                                                Hamdard University, Karachi (2003)
-                                                            </li>
-
-                                                        </div>
-
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                        accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                                        non cupidatat skateboard dolor brunch. Food truck quinoa
-                                                        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                                        put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                                        wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                                                        excepteur butcher vice lomo. Leggings occaecat craft beer
-                                                        farm-to-table, raw denim aesthetic synth nesciunt you probably
-                                                        haven't heard of them accusamus labore sustainable VHS.
-
-                                                    </div>
-
-                                                </div>
-
+                
                 `
-                
+
+
+            }
+
+            else {
+
+
+                ExpData.map(exp => {
+
+
+                    let htmlCode;
+
+                    htmlCode = `
+    
+                    
+                         <li><i class="fa fa-regular fa-circle-dot"></i>
+                         ${exp.Qualification}
+                         </li>
+                         
+                         
+                         
+                         
+                         
+                         `
+
+
+                    cardDetail.innerHTML += htmlCode;
+
+
+                })
+
             }
 
 
+            //  for Qualification Toggle Tab Showing Data
+
+
+            if (QuaData.length === 0) {
+
+
+
+
+                cardQua.innerHTML += `
+                
+                <div class="noData">
+                
+                    No Data Available
+                
+                </div>
+
+                
+                `
+
+
+            }
+
+            else {
+
+
+                QuaData.map(quali => {
+
+
+                    //  if Qualification data exist but qualification Data didn't enter
+
+
+                    if (quali.Qualification !== '') {
+
+                        let htmlCode;
+
+                        htmlCode = `
+                        
+                        
+                        <li><i class="fa fa-regular fa-circle-dot"></i>
+                        ${quali.Qualification}
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        `
+
+
+                        cardQua.innerHTML += htmlCode;
+
+
+
+
+                    }
+
+
+                    else {
+
+                        cardQua.innerHTML += `
+                
+                            <div class="noData">
+                
+                                Qualification Not Available
+                
+                            </div>
+
+                
+                        `
+
+                    }
+
+
+
+
+
+
+
+
+
+                })
+
+            }
+
+
+            // For Research Tab
+
+
+            for (let k = 0; k < ResTab.length; k++) {
+
+                const Res = ResTab[k];
+
+
+                cardRes.innerHTML += `
             
-        }
+                        <div class="card" id="cardDetail3" onclick=active()>
+
+                            <div class="card-header" id="headingTwo">
+                
+                                <h5 class="mb-0">
+
+                                    <i  onclick="changeCss(this)" class="fa-solid fa-minus">
+
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
+                
+                                                ${Res.ResearchHeadDesc}
+
+                                                </button>
+                    
+                                                </i>
+                       
+                                                </h5>
+                    
+                                                </div>
+
+                    <div id="${Res.ResearchDesc}" class="collapse show" aria-labelledby="headingOne"
+                                                    data-parent="#accordion">
+
+                                                    <div class="card-body">
+                
+                
+                                                        <div class="eduList" id="qualist">
+
+                                                    
+
+                                                    <li style="list-style:none"><i class="fa fa-regular fa-circle-dot"></i>
+                                                    ${Res.ResearchDesc}</li>
+
+                                                    </div>
+                                                        
+                                                    </div>
 
 
-        
-    })
-    
+                    </div>
+                    </div>
+            
+            
+                `
+
+
+            }
+
+
+        })
+
 
 }
 
@@ -598,13 +681,16 @@ function clearRender() {
 
 
 
+// For Active List 
 
 
-function active(DeptId) {
+
+function active() {
 
 
     var ul = document.querySelectorAll("#list")
-    
+    var cardli = document.querySelectorAll("card-header")
+
     ul.forEach(ull => {
 
         ull.addEventListener('click', function () {
@@ -618,5 +704,41 @@ function active(DeptId) {
 
     })
 
+    cardli.forEach(ca => {
+
+        ca.addEventListener('click', function () {
+
+
+            car.forEach(carli => carli.classList.remove('card-header'))
+            this.classList.add('card-active')
+
+
+
+        })
+
+    })
+
 
 }
+
+
+// For Change Css
+
+function changeCss(x) {
+
+
+
+
+
+    x.classList.toggle("fa-minus")
+    x.classList.toggle("fa-plus")
+
+
+
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    getdata()
+});
