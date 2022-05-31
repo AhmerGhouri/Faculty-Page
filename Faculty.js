@@ -274,15 +274,45 @@ async function getcards(DeptId) {
 
 
 
-            console.log("cards",cards)
 
             for (let i = 0; i < cards.length ; i++) {
                 const element = cards[i];
 
+                var img = element.Img
+ 
+                
+                // Image Covert Binary Array to Image
+
+                var imgsrc = "data:image/png;base64," + btoa(new Uint8Array(element.Img).reduce(function(data , byte){
+                    return data + String.fromCharCode(byte)
+                }, ''))
 
 
 
-                var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(element.Img)))
+
+                // ---------------------------------------------------------------------------------------------------------------
+
+
+                // Code For Image Conversion
+                
+                // Image Covert Binary Array to Image
+
+                // Converted Image But Give error (Maximum call stack size Exceeded Code) Didn't show all data 
+
+
+                
+                // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(new Uint8Array(element.Img).reduce(function (img , byte){
+                    // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null , new Uint8Array(element.Img)))
+
+                //     return img + String.fromCharCode(byte)
+
+                // })))
+                // var imgsrc = "data:image/png;base64," + btoa(new TextDecoder('utf-8').decode(new Uint8Array(element.Img)))
+                // var imgsrc = "data:image/png;base64," + btoa(unescape(encodeURIComponent(new TextDecoder('utf-8').decode(new Uint8Array(img)))))
+
+                
+
+                // ------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -326,7 +356,7 @@ async function getcards(DeptId) {
                             <div class="butn">
     
     
-                                    <button onclick=popupData(${element.EmpId}) data-toggle="modal" data-target="#exampleModalLong" type="button" class="btn1 btn-primary"
+                                    <button onclick='popupData(${element.EmpId})' data-toggle="modal" data-target="#exampleModalLong" type="button" class="btn1 btn-primary"
                                     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
                                     Read More
                                     </button>
@@ -368,8 +398,10 @@ async function getcards(DeptId) {
 // For PopUp Data
 
 
-async function popupData(Id) {
+async function popupData(Id , img) {
 
+
+    console.log("image" , img)
 
     await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
 
@@ -381,6 +413,7 @@ async function popupData(Id) {
 
         .then(function (data) {
 
+            
 
             var detData = data.NewEventsResultsData
 
