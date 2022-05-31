@@ -300,7 +300,7 @@ async function getcards(DeptId) {
                 // Converted Image But Give error (Maximum call stack size Exceeded Code) Didn't show all data 
 
 
-                
+
                 // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(new Uint8Array(element.Img).reduce(function (img , byte){
                     // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null , new Uint8Array(element.Img)))
 
@@ -398,10 +398,9 @@ async function getcards(DeptId) {
 // For PopUp Data
 
 
-async function popupData(Id , img) {
+async function popupData(Id) {
 
 
-    console.log("image" , img)
 
     await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
 
@@ -646,16 +645,17 @@ async function popupData(Id , img) {
 
                 const Res = ResTab[k];
 
+                console.log(Res , "Res")
 
                 cardRes.innerHTML += `
             
                         <div class="card" id="cardDetail3" onclick=active()>
 
-                            <div class="card-header" id="headingTwo">
+                            <div onclick=changeCss(this) class="card-header" id="${Res.ResearchHeadId}" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
                 
                                 <h5 class="mb-0">
 
-                                    <i  onclick="changeCss(this)" class="fa-solid fa-minus">
+                                    <i class="fa-solid fa-minus" id="minus3">
 
                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
                 
@@ -669,7 +669,7 @@ async function popupData(Id , img) {
                     
                                                 </div>
 
-                    <div id="${Res.ResearchDesc}" class="collapse show" aria-labelledby="headingOne"
+                                                    <div id="${Res.ResearchDesc}" class="collapse show" aria-labelledby="headingOne"
                                                     data-parent="#accordion">
 
                                                     <div class="card-body">
@@ -760,11 +760,33 @@ function active() {
 function changeCss(x) {
 
 
+    console.log("x" , x)
+
+    var minus = document.getElementById("minus")
+    var minus1 = document.getElementById("minus1")
+    var minus3 = document.getElementById("minus3")
+    
+    console.log("minus1" , x.id)
+
+    if(x.id === "headingTwo"){
+
+        minus1.classList.toggle("fa-minus")
+        minus1.classList.toggle("fa-plus")
 
 
+    }
+    if (x.id === "headingOne") {
+      
+        
+        minus.classList.toggle("fa-plus")
+        minus.classList.toggle("fa-minus")
 
-    x.classList.toggle("fa-minus")
-    x.classList.toggle("fa-plus")
+    } 
+
+
+    // x.classList.toggle("fa-plus")
+    // x.classList.toggle("fa-minus")
+
 
 
 

@@ -121,14 +121,13 @@
 
                                             <div class="card" id="cardDetail">
 
-                                                <div class="card-header" id="headingTwo">
+                                                <div onclick="changeCss(this)" class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
 
                                                     <h5 class="mb-0">
-                                                        <i  onclick="changeCss(this)" class="fa-solid fa-minus">
+                                                        <i class="fa-solid fa-minus" id="minus">
                                                         
                                                       <button  class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
 
-                                                        <!-- <i  onclick="changeCss(this)" class="fa-solid fa-minus"></i> -->
                                                         Experience
                                                         
                                                     </button>
@@ -157,24 +156,27 @@
 
                                             <div class="card" id="cardDetail">
 
-                                                <div class="card-header" id="headingTwo">
+                                                <div class="plus">
 
-                                                    <h5 class="mb-0">
-                                                        <i  onclick="changeCss(this)" class="fa-solid fa-minus">
-
-                                                        
-                                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-
-                                                                Qualification
-
-                                                            </button>
+                                                    <div onclick="changeCss(this)" class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        <h5 class="mb-0">
                                                             
+                                                            <i  class="fa-solid fa-minus" id="minus1">
+                                                                
+                                                                
+                                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                    
+                                                                    Qualification
+                                                                    
+                                                                </button>
+                                                                
+                                                            </i>
+                                                                
+                                                            </h5>
                                                             
-                                                        </i>
-                                                        </h5>
-
+                                                        </div>
+                                                    
                                                 </div>
-
                                                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne"
                                                 data-parent="#accordion">
 
