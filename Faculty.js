@@ -284,11 +284,22 @@ async function getcards(DeptId) {
                 // Image Covert Binary Array to Image
 
                 var imgsrc = "data:image/png;base64," + btoa(new Uint8Array(element.Img).reduce(function(data , byte){
+
+                    // console.log("data" , data)
+                    // console.log("byte" , byte)
+
                     return data + String.fromCharCode(byte)
                 }, ''))
 
 
 
+                // console.log("image src" , imgsrc)
+
+                // var localImage = localStorage.setItem('Image' , imgsrc)
+
+
+
+                // console.log(localImage)
 
                 // ---------------------------------------------------------------------------------------------------------------
 
@@ -356,7 +367,7 @@ async function getcards(DeptId) {
                             <div class="butn">
     
     
-                                    <button onclick='popupData(${element.EmpId})' data-toggle="modal" data-target="#exampleModalLong" type="button" class="btn1 btn-primary"
+                                    <button onclick='popupData("${element.EmpId}" , "${imgsrc}" )' data-toggle="modal" data-target="#exampleModalLong" type="button" class="btn1 btn-primary"
                                     style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.5rem; --bs-btn-font-size: .90rem;">
                                     Read More
                                     </button>
@@ -385,11 +396,13 @@ async function getcards(DeptId) {
 
 
             }
-
-
+            
+            // console.log("img src" , imgsrc)
+            
+            return imgsrc
         })
 
-
+        
 
 
 }
@@ -398,122 +411,137 @@ async function getcards(DeptId) {
 // For PopUp Data
 
 
-async function popupData(Id) {
+async function popupData(Id , ima) {
 
 
+    console.log("Id" , Id)
+    // console.log("Image" , localStorage.getItem('Image'))
+    console.log("Image" , ima)
 
+    
     await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
 
-        .then(function (response) {
-
-            return response.json()
-
-        })
-
-        .then(function (data) {
-
+    .then(function (response) {
+        
+        return response.json()
+        
+    })
+    
+    .then(function (data) {
+        
             
 
-            var detData = data.NewEventsResultsData
-
-            var ExpData = data.Lst_Exp
-
-            var QuaData = data.Lst_Qua
-
-            var ResTab = data.Lst_Research
-
-            var header = document.getElementById("header")
-
-            var cardQua = document.getElementById("qualist")
-
-            var cardRes = document.getElementById("cardDetail3")
-
+        var detData = data.NewEventsResultsData
+        
+        var ExpData = data.Lst_Exp
+        
+        var QuaData = data.Lst_Qua
+        
+        var ResTab = data.Lst_Research
+        
+        var header = document.getElementById("header")
+        
+        var cardQua = document.getElementById("qualist")
+        
+        var cardRes = document.getElementById("cardDetail3")
+        
             var cardDetail = document.getElementById("educlist")
-
+            
             document.getElementById('educlist').innerHTML = '';
             document.getElementById('qualist').innerHTML = '';
             document.getElementById('cardDetail3').innerHTML = '';
-
-
-
+            
+            
+            
             // For Name , designation and department Headings
-
+            
             for (let i = 0; i < detData.length; i++) {
                 const detail = detData[i];
+                
+                // var popupImage = localStorage.getItem('Image')
+
+                // for(k = 0 ; k < popupImage.length ; k++){
+
+                //     var pop = popupImage[k]
 
 
+                //     console.log("pop" , pop)
+
+                // }
+
+                
                 header.innerHTML = `
-            
-            
-                    <div class="imgDiv">
                 
                 
-                        <div class="image">
-            
-            
-                            <img class="mainimg" src="/img/Dr-Meesam-Iftekhar-Hussain-Rizvi-p7ho61yjmsmnj8epq1nnga04ixmhxr9xy2am4rzmxc.png" alt="">
-            
-            
-            
+                <div class="imgDiv">
+                
+                
+                <div class="image">
+                
+                
+                <img class="mainimg" src="${ima}" alt="No Image Available">
+                
+                
+                
                         </div>
-
-
+                        
+                        
                         <div class="detContDiv">
-
-                            <div class="nameHeading">
-                
-                
+                        
+                        <div class="nameHeading">
+                        
+                        
                                 <span>${detail.EmpName}</span>
-        
-        
-                            </div>
-                        
-                        
-                            <div class="designHeading">
-        
-        
+                                
+                                
+                                </div>
+                                
+                                
+                                <div class="designHeading">
+                                
+                                
                                 <span>${detail.DesignationName}</span>
-        
-        
-                            </div>
-                            
-                            <div class="designHeading">
-                            
-                            
+                                
+                                
+                                </div>
+                                
+                                <div class="designHeading">
+                                
+                                
                                 <span>${detail.DepartmentName}</span>
-        
-        
-                            </div>
+                                
+                                
+                                </div>
             
-                        </div>
-                        
+                                </div>
+                                
                         </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
                                     <span aria-hidden="true">&times;</span>
-
-                                </button>
-
+                                    
+                                    </button>
+                                    
+                                    
+                                    
+                                    
+                                    `
+                                    
+                                    
+                                }
                                 
-
-
-            `
-
-
-            }
-
             //  for Experience Toggle Tab Showing Data
 
             if (ExpData.length === 0) {
-
-
-
-
+                
+                
+                
+                
                 cardDetail.innerHTML += `
                 
                 <div class="noData">
                 
-                    No Data Available
+                No Data Available
                 
                 </div>
 
@@ -645,13 +673,15 @@ async function popupData(Id) {
 
                 const Res = ResTab[k];
 
-                console.log(Res , "Res")
+            //   dynaminChangeCss(Res.ResearchHeadId)
+
+
 
                 cardRes.innerHTML += `
             
                         <div class="card" id="cardDetail3" onclick=active()>
 
-                            <div onclick=changeCss(this) class="card-header" id="${Res.ResearchHeadId}" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
+                            <div onclick='dynaminChangeCss(${Res.ResearchHeadID} , this)' class="card-header" id="${Res.ResearchHeadID}" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
                 
                                 <h5 class="mb-0">
 
@@ -692,7 +722,7 @@ async function popupData(Id) {
             
             
                 `
-
+                console.log(Res , "Res")
 
             }
 
@@ -760,13 +790,31 @@ function active() {
 function changeCss(x) {
 
 
-    console.log("x" , x)
+    // console.log("res" , res)
+
+    // fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
+
+    // .then(function (response) {
+
+    //     return response.json()
+
+    // })
+
+    // .then(function (data) {
+    
+    //     var resId = data.Lst_Research
+
+
+    
+    // })
+
+    // console.log("x" , x)
 
     var minus = document.getElementById("minus")
     var minus1 = document.getElementById("minus1")
-    var minus3 = document.getElementById("minus3")
+    // var minus3 = document.getElementById("minus3")
     
-    console.log("minus1" , x.id)
+    // console.log("minus1" , x.id)
 
     if(x.id === "headingTwo"){
 
@@ -791,6 +839,31 @@ function changeCss(x) {
 
 
 }
+
+
+
+function dynaminChangeCss(z , res){
+
+
+    var minus3 = document.getElementById('minus3')
+    console.log("z" , z)
+    console.log("res" , res.id)
+
+    if(z === res.id){
+
+
+        // minus3.classList.toggle("fa-plus");
+        // minus3.classList.toggle("fa-minus");
+
+        console.log("horaha ha")
+
+    }
+
+
+
+}
+
+
 
 
 
