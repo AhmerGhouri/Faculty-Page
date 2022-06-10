@@ -197,6 +197,7 @@
 
     border: #013777 1px solid !important;
     box-shadow: 2px 2px 15px 2px grey;
+    cursor: pointer;
 
 
 }
@@ -210,6 +211,7 @@
     border: 1px solid green !important;
     border-radius: 2px !important;
     background-color: #013777 !important;
+    cursor: pointer;
 
 }
 
@@ -754,23 +756,31 @@
 
 /* width */
 ::-webkit-scrollbar {
+
     width: 10px;
-  }
+
+}
   
   /* Track */
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
+
     background: #f1f1f1;
-  }
+  
+}
   
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
+
     background: #013777;
-  }
+
+}
   
   /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
+    
     background: #555;
-  }
+
+}
 
 
 

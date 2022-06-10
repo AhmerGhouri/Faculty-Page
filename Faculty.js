@@ -183,17 +183,17 @@ function getdata() {
 //     // console.log("deptee" , DeptId)
 
 //     fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=3`)
-    
+
 //     .then(function (response) {
-        
-        
+
+
 //         return response.json()
-        
+
 //     })
-    
+
 //     .then(function (data) {
-        
-        
+
+
 //         // console.log("dept" , data)   
 
 //         var Pagin = document.getElementById('Pagin')
@@ -231,7 +231,7 @@ function getdata() {
 //             // console.log("num" , NumNewRec)
 
 
-            
+
 //         }
 
 
@@ -248,7 +248,7 @@ async function getcards(DeptId) {
     active()
     clearRender()
     // get(DeptId)
-    
+
 
     await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebfacultyHandler.ashx?deptid=${DeptId}`)
 
@@ -275,15 +275,15 @@ async function getcards(DeptId) {
 
 
 
-            for (let i = 0; i < cards.length ; i++) {
+            for (let i = 0; i < cards.length; i++) {
                 const element = cards[i];
 
                 var img = element.Img
- 
-                
+
+
                 // Image Covert Binary Array to Image
 
-                var imgsrc = "data:image/png;base64," + btoa(new Uint8Array(element.Img).reduce(function(data , byte){
+                var imgsrc = "data:image/png;base64," + btoa(new Uint8Array(element.Img).reduce(function (data, byte) {
 
                     // console.log("data" , data)
                     // console.log("byte" , byte)
@@ -305,7 +305,7 @@ async function getcards(DeptId) {
 
 
                 // Code For Image Conversion
-                
+
                 // Image Covert Binary Array to Image
 
                 // Converted Image But Give error (Maximum call stack size Exceeded Code) Didn't show all data 
@@ -313,7 +313,7 @@ async function getcards(DeptId) {
 
 
                 // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(new Uint8Array(element.Img).reduce(function (img , byte){
-                    // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null , new Uint8Array(element.Img)))
+                // var imgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null , new Uint8Array(element.Img)))
 
                 //     return img + String.fromCharCode(byte)
 
@@ -321,7 +321,7 @@ async function getcards(DeptId) {
                 // var imgsrc = "data:image/png;base64," + btoa(new TextDecoder('utf-8').decode(new Uint8Array(element.Img)))
                 // var imgsrc = "data:image/png;base64," + btoa(unescape(encodeURIComponent(new TextDecoder('utf-8').decode(new Uint8Array(img)))))
 
-                
+
 
                 // ------------------------------------------------------------------------------------------------------------------
 
@@ -396,13 +396,13 @@ async function getcards(DeptId) {
 
 
             }
-            
+
             // console.log("img src" , imgsrc)
-            
+
             return imgsrc
         })
 
-        
+
 
 
 }
@@ -411,53 +411,53 @@ async function getcards(DeptId) {
 // For PopUp Data
 
 
-async function popupData(Id , ima) {
+async function popupData(Id, ima) {
 
 
-    console.log("Id" , Id)
+    // console.log("Id" , Id)
     // console.log("Image" , localStorage.getItem('Image'))
-    console.log("Image" , ima)
+    // console.log("Image" , ima)
 
-    
+
     await fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
 
-    .then(function (response) {
-        
-        return response.json()
-        
-    })
-    
-    .then(function (data) {
-        
-            
+        .then(function (response) {
 
-        var detData = data.NewEventsResultsData
-        
-        var ExpData = data.Lst_Exp
-        
-        var QuaData = data.Lst_Qua
-        
-        var ResTab = data.Lst_Research
-        
-        var header = document.getElementById("header")
-        
-        var cardQua = document.getElementById("qualist")
-        
-        var cardRes = document.getElementById("cardDetail3")
-        
+            return response.json()
+
+        })
+
+        .then(function (data) {
+
+
+
+            var detData = data.NewEventsResultsData
+
+            var ExpData = data.Lst_Exp
+
+            var QuaData = data.Lst_Qua
+
+            var ResTab = data.Lst_Research
+
+            var header = document.getElementById("header")
+
+            var cardQua = document.getElementById("qualist")
+
+            var cardRes = document.getElementById("cardDetail3")
+
             var cardDetail = document.getElementById("educlist")
-            
+
             document.getElementById('educlist').innerHTML = '';
             document.getElementById('qualist').innerHTML = '';
             document.getElementById('cardDetail3').innerHTML = '';
-            
-            
-            
+
+
+
             // For Name , designation and department Headings
-            
+
             for (let i = 0; i < detData.length; i++) {
                 const detail = detData[i];
-                
+
                 // var popupImage = localStorage.getItem('Image')
 
                 // for(k = 0 ; k < popupImage.length ; k++){
@@ -469,7 +469,7 @@ async function popupData(Id , ima) {
 
                 // }
 
-                
+
                 header.innerHTML = `
                 
                 
@@ -526,17 +526,20 @@ async function popupData(Id , ima) {
                                     
                                     
                                     `
-                                    
-                                    
-                                }
-                                
+
+
+            }
+
+
+
             //  for Experience Toggle Tab Showing Data
 
+
             if (ExpData.length === 0) {
-                
-                
-                
-                
+
+
+
+
                 cardDetail.innerHTML += `
                 
                 <div class="noData">
@@ -668,62 +671,112 @@ async function popupData(Id , ima) {
 
             // For Research Tab
 
+            /* checks for unique keynames in array */
 
-            for (let k = 0; k < ResTab.length; k++) {
+            const checkForUnique = (ResTab, keyName) => {
 
-                const Res = ResTab[k];
+                /* make set to remove duplicates and compare to  */
 
-            //   dynaminChangeCss(Res.ResearchHeadId)
+                const uniqueValues = [...new Set(ResTab.map(v => v[keyName]))];
 
+
+                if (ResTab.length !== uniqueValues.length) {
+
+
+                    console.log("unique Value", uniqueValues)
+                    return uniqueValues
+
+
+                }
+
+
+                return true
+
+
+            }
+
+
+            /* call function with arr and key to check for  */
+
+
+            let isUnique = checkForUnique(ResTab, "ResearchHeadDesc")
+
+            for (let k = 0; k < isUnique.length; k++) {
+                const element = isUnique[k];
 
 
                 cardRes.innerHTML += `
             
-                        <div class="card" id="cardDetail3" onclick=active()>
 
-                            <div onclick='dynaminChangeCss(${Res.ResearchHeadID} , this)' class="card-header" id="${Res.ResearchHeadID}" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="card" id="cardDetail3">
+
+                                <div class="card-header" id="" data-toggle="collapse" data-target="#${element}" aria-expanded="false" aria-controls="${element}">
+    
+                                    <h5 class="mb-0">
+
+                                        <i class="fa-solid fa-minus" id="">
+
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="${element}">
+    
+                                                ${element}
+
+                                            </button>
+        
+                                        </i>
+           
+                                    </h5>
+        
+                                </div>
+
+                                <div class="carddyna" id="${element}">
+
+
+                                </div>
+                        
+
+                            </div>                            
+                                
+                        `
+
+                for (let k = 0; k < ResTab.length; k++) {
+
+                    const Res = ResTab[k];
+
+                    var dynacard = document.getElementById(Res.ResearchHeadDesc)
+
+                    if (Res.ResearchHeadDesc === element) {
+
+
+                        dynacard.innerHTML += `
+
                 
-                                <h5 class="mb-0">
+        
+                    <div id="${Res.ResearchHeadDesc}" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
 
-                                    <i class="fa-solid fa-minus" id="minus3">
+                        <div class="card-body">
+        
+        
+                            <div class="eduList" id="qualist">
 
-                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#${Res.ResearchDesc}" aria-expanded="false" aria-controls="collapseTwo">
-                
-                                                ${Res.ResearchHeadDesc}
+                                               
+                                               
+                                <li style="list-style:none"><i class="fa fa-regular fa-circle-dot"></i>
+                                    ${Res.ResearchDesc}
+                                </li>
 
-                                                </button>
-                    
-                                                </i>
-                       
-                                                </h5>
-                    
-                                                </div>
-
-                                                    <div id="${Res.ResearchDesc}" class="collapse show" aria-labelledby="headingOne"
-                                                    data-parent="#accordion">
-
-                                                    <div class="card-body">
-                
-                
-                                                        <div class="eduList" id="qualist">
-
-                                                    
-
-                                                    <li style="list-style:none"><i class="fa fa-regular fa-circle-dot"></i>
-                                                    ${Res.ResearchDesc}</li>
-
-                                                    </div>
-                                                        
-                                                    </div>
-
-
+                        
+                        </div>
+                                               
+                        
                     </div>
-                    </div>
-            
-            
+                                               
+                                               
+                
+                
                 `
-                console.log(Res , "Res")
 
+                    }
+                }
             }
 
 
@@ -787,36 +840,16 @@ function active() {
 
 // For Change Css
 
+
 function changeCss(x) {
 
 
-    // console.log("res" , res)
-
-    // fetch(`https://local.sohailuniversity.edu.pk:90/Handlers/SuWebFacultyHandlerDetail.ashx?empid=${Id}`)
-
-    // .then(function (response) {
-
-    //     return response.json()
-
-    // })
-
-    // .then(function (data) {
-    
-    //     var resId = data.Lst_Research
-
-
-    
-    // })
-
-    // console.log("x" , x)
 
     var minus = document.getElementById("minus")
     var minus1 = document.getElementById("minus1")
-    // var minus3 = document.getElementById("minus3")
-    
-    // console.log("minus1" , x.id)
 
-    if(x.id === "headingTwo"){
+
+    if (x.id === "headingTwo") {
 
         minus1.classList.toggle("fa-minus")
         minus1.classList.toggle("fa-plus")
@@ -824,44 +857,44 @@ function changeCss(x) {
 
     }
     if (x.id === "headingOne") {
-      
-        
+
+
         minus.classList.toggle("fa-plus")
         minus.classList.toggle("fa-minus")
-
-    } 
-
-
-    // x.classList.toggle("fa-plus")
-    // x.classList.toggle("fa-minus")
-
-
-
-
-}
-
-
-
-function dynaminChangeCss(z , res){
-
-
-    var minus3 = document.getElementById('minus3')
-    console.log("z" , z)
-    console.log("res" , res.id)
-
-    if(z === res.id){
-
-
-        // minus3.classList.toggle("fa-plus");
-        // minus3.classList.toggle("fa-minus");
-
-        console.log("horaha ha")
 
     }
 
 
-
 }
+
+
+
+// --------------------------------------------------------------------------------------//
+
+//   Testing Code for Dynamic icon change
+
+
+// function dynaminChangeCss(z , res){
+
+
+//     var minus3 = document.getElementById('minus3')
+
+//     console.log("z" , z)
+//     console.log("res" , res)
+
+
+
+//         // minus3.classList.toggle("fa-plus");
+//         // minus3.classList.toggle("fa-minus");
+
+//         // console.log("horaha ha")
+
+
+
+// }
+
+
+// ----------------------------------------------------------------------------------------------------//
 
 
 
